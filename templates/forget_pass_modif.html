@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h4>{% block title %} Réinitialisation de mot de passe {% endblock %}</h4>
+          </div>
+          <div class="card-body">
+            <!-- Formulaire d'inscription -->
+            <form method="post">
+              <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirmez le mot de passe</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Enregistrer le nouveau mot de passe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Ajoutez votre code JavaScript pour la vérification de mot de passe -->
+  <script>
+      // Fonction pour vérifier le mot de passe lorsqu'on sort des champs de saisie
+      function checkPasswordOnBlur(inputId) {
+          var password = document.getElementById('password').value;
+          var confirmPassword = document.getElementById('confirmPassword').value;
+
+          if (password !== '' && confirmPassword !== '') {
+              if (password === confirmPassword) {
+                  document.getElementById('password').style.backgroundColor = 'green';
+                  document.getElementById('confirmPassword').style.backgroundColor = 'green';
+              } else {
+                  document.getElementById('password').style.backgroundColor = 'red';
+                  document.getElementById('confirmPassword').style.backgroundColor = 'red';
+              }
+          }
+      }
+
+      // Écouter l'événement "blur" sur les champs de saisie de mot de passe
+      document.getElementById('password').addEventListener('blur', function() {
+          checkPasswordOnBlur('password');
+      });
+
+      document.getElementById('confirmPassword').addEventListener('blur', function() {
+          checkPasswordOnBlur('confirmPassword');
+      });
+  </script>
+{% endblock %}

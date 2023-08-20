@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-2">Nom</div>
+      <div class="col-md-3">Mail</div>
+      <div class="col-md-2">Date de création</div>
+      <div class="col-md-2">Dernière connexion</div>
+      <div class="col-md-1">Actif</div>
+      <div class="col-md-1">Admin</div>
+      <div class="col-md-1"></div>
+    </div>
+    {% for uuser in users_list %}
+      <form method="post">
+        <div class="row">        
+          <div class="col-md-2"><p>{{uuser['name']}}</p></div>
+          <div class="col-md-3"><p>{{uuser['email']}}</p></div>
+          <div class="col-md-2"><p>{{uuser['creation_date']}}</p></div>
+          <div class="col-md-2"><p>{{uuser['last_login']}}</p></div>
+          <div class="col-md-1 d-flex justify-content-center">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="actif" {{ "checked" if uuser['actif']==1 else "" }}>
+            </div>
+          </div>
+          <div class="col-md-1 d-flex justify-content-center">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="grade" {{ "checked" if uuser['grade']==0 else "" }}>
+            </div>
+          </div>
+          <div class="col-md-1">
+            <input type="hidden" name="id_user" value="{{uuser['idUsers']}}">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </form>
+    {% endfor %}
+  </div>
+{% endblock %}x

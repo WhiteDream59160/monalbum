@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h4>{% block title %} Inscription {% endblock %}</h4>
+          </div>
+          <div class="card-body">
+            <!-- Formulaire d'inscription -->
+            <form method="post">
+              <div class="alert alert-warning" role="alert">
+                Tout les champs sont obligatoire.<br>
+                Merci de saisir une adresse mail valide, un mail vous seras envoyé pour l'activation du comptes
+              </div>
+              <div class="mb-3">
+                <label for="username" class="form-label">Nom d'utilisateur</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirmez le mot de passe</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Adresse email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <button type="submit" class="btn btn-primary">S'inscrire</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Ajoutez votre code JavaScript pour la vérification de mot de passe -->
+  <script>
+      // Fonction pour vérifier le mot de passe lorsqu'on sort des champs de saisie
+      function checkPasswordOnBlur(inputId) {
+          var password = document.getElementById('password').value;
+          var confirmPassword = document.getElementById('confirmPassword').value;
+
+          if (password !== '' && confirmPassword !== '') {
+              if (password === confirmPassword) {
+                  document.getElementById('password').style.backgroundColor = 'green';
+                  document.getElementById('confirmPassword').style.backgroundColor = 'green';
+              } else {
+                  document.getElementById('password').style.backgroundColor = 'red';
+                  document.getElementById('confirmPassword').style.backgroundColor = 'red';
+              }
+          }
+      }
+
+      // Écouter l'événement "blur" sur les champs de saisie de mot de passe
+      document.getElementById('password').addEventListener('blur', function() {
+          checkPasswordOnBlur('password');
+      });
+
+      document.getElementById('confirmPassword').addEventListener('blur', function() {
+          checkPasswordOnBlur('confirmPassword');
+      });
+  </script>
+{% endblock %}

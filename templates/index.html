@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <h1>{% block title %} Mon album {% endblock %}</h1>
+   <div class="row mb-4">
+      {% for album in albums %}
+      <div class="col-md-4">
+         <div class="card" style="width: 18rem;">
+            <img src="{{url_for('static', filename='photos/No_image_available.png')}}" class="card-img-top" alt="...">
+            <div class="card-body">
+               <h5 class="card-title">{{ album['name'] }}</h5>
+               <p class="card-text">{{ album['description'] }}</p>
+               <a href="{{ url_for('show_album', id_album=album['id_album']) }}" class="btn btn-primary">Ouvrir l'album</a>
+            </div>
+         </div>
+      </div>
+         {% if loop.index % 3 == 0 %}
+   </div>
+   <div class="row mb-4">
+         {% endif %}
+
+         {% if loop.last and loop.length %3 != 0 %}
+   </div>
+         {% endif %}
+      {% endfor %}
+{% endblock %}

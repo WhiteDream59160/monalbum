@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Modification de l'album "{{ album['name'] }}" {% endblock %}</h1>
+
+<form method="post" enctype="multipart/form-data">
+
+	<div class="form-group">
+        <label for="file">Photos a ajouter</label>
+        <input type="file" name="file" multiple>
+    </div>
+	
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+</form>
+{% endblock %}

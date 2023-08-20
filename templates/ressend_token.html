@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h4>{% block title %} Renvoie du mail de vérification {% endblock %}</h4>
+          </div>
+          <div class="card-body">
+            <!-- Formulaire de connexion -->
+            <form method="post">
+              <div class="mb-3">
+                <label for="mail" class="form-label">Mail utilisé pour l'enregistrement</label>
+                <input type="text" class="form-control" id="mail" name="mail" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Renvoyer le mail</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
