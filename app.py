@@ -12,7 +12,7 @@ app = Flask(__name__)
 if os.environ.get('FLASK_ENV') == None:
     load_dotenv('.env')
 
-url_site = os.environ.get('DATABASE_URL')
+url_site = os.environ.get('URL_SITE')
 app.config['UPLOAD_FOLDER'] = os.environ.get('UPLOAD_FOLDER')
 mailgun_api_key = os.environ.get('MAILGUN_API_KEY')
 mailgun_domain = os.environ.get('MAILGUN_DOMAIN')
