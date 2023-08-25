@@ -18,6 +18,8 @@ mailgun_api_key = os.environ.get('MAILGUN_API_KEY')
 mailgun_domain = os.environ.get('MAILGUN_DOMAIN')
 app.secret_key = os.environ.get('SECRET_KEY')
 
+print os.environ.get('DATABASE_URL')
+
 # Configuration de la connexion à la base de données
 db_config = {
     'host': os.environ.get('DATABASE_URL'),
