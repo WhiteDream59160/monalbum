@@ -17,15 +17,19 @@ app.config['UPLOAD_FOLDER'] = os.environ.get('UPLOAD_FOLDER')
 mailgun_api_key = os.environ.get('MAILGUN_API_KEY')
 mailgun_domain = os.environ.get('MAILGUN_DOMAIN')
 app.secret_key = os.environ.get('SECRET_KEY')
+db_url = os.environ.get('DATABASE_URL')
+db_user = os.environ.get('DATABASE_USER')
+db_pwd = os.environ.get('DATABASE_PASS')
+db_name = os.environ.get('DATABASE_DB')
 
-print(os.environ.get('DATABASE_URL'))
+
 
 # Configuration de la connexion à la base de données
 db_config = {
-    'host': os.environ.get('DATABASE_URL'),
-    'user': os.environ.get('DATABASE_USER'),
-    'password': os.environ.get('DATABASE_PASS'),
-    'database': os.environ.get('DATABASE_DB'),
+    'host': db_url,
+    'user': db_user,
+    'password': db_pwd,
+    'database': db_name
 }
 
 class User(UserMixin):
@@ -358,6 +362,7 @@ login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
+    print(db_url)
     return User.get(user_id)
 
 @app.route('/')
