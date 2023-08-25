@@ -24,6 +24,7 @@ db_name = os.environ.get('DATABASE_DB')
 
 log_file = open('/app/debug.log', 'w')
 log_file.write(db_url)
+log_file.close
 
 # Configuration de la connexion à la base de données
 db_config = {
