@@ -393,7 +393,7 @@ def create():
             flash('Un nom est obligatoire pour la création d\'un album !')
         else:
             conn = get_db_connection()
-            query = "INSERT INTO Albums (id_album, description) VALUES (%s, %s)"
+            query = "INSERT INTO Albums (name, description) VALUES (%s, %s)"
             values = (name, description)
             cursor = conn.cursor()
             cursor.execute(query, values)
