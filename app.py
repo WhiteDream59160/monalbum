@@ -22,10 +22,6 @@ db_user = os.environ.get('DATABASE_USER')
 db_pwd = os.environ.get('DATABASE_PASS')
 db_name = os.environ.get('DATABASE_DB')
 
-with open('mon_fichier.txt', 'w') as fichier:
-    fichier.write("Ceci est un exemple de texte.\n")
-    fichier.write("'" + db_url + "'\n")
-
 # Configuration de la connexion à la base de données
 db_config = {
     'host': db_url,

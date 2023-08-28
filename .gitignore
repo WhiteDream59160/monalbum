@@ -1,3 +1,4 @@
 .env
 static/photos/**
 !static/photos/*.*
+run.sh
